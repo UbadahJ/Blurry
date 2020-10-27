@@ -82,6 +82,26 @@ Blurry.with(this)
   }
 ```
 
+or using Bitmap
+
+```kotlin
+val bitmap = Blurry.with(this)
+  .radius(10)
+  .sampling(8)
+  .from(bitmap).get()
+imageView.setImageDrawable(BitmapDrawable(resources, bitmap))
+
+// Async
+Blurry.with(this)
+  .radius(25)
+  .sampling(4)
+  .color(Color.argb(66, 255, 255, 0))
+  .from(bitmap)
+  .getAsync {
+    imageView.setImageDrawable(BitmapDrawable(resources, it))
+  }
+```
+
 Requirements
 --------------
 Android 5.+ (API 21)
